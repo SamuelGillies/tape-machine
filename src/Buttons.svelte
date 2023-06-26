@@ -1,7 +1,7 @@
 <script>
 
     function playing() {
-
+        
     }
 
     function stopping() {
