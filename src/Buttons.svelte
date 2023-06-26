@@ -1,7 +1,7 @@
 <script>
 
     function playing() {
-        
+
     }
 
     function stopping() {
@@ -21,8 +21,8 @@
 
 
 <div id="button-container">
-    <div class="button" id="play" on:click={playing} role="button" tabindex="0"></div>
-    <div class="button" id="stop" on:click={stopping} on:mouseup={stopUpdate} role="button" tabindex="0"></div>
+    <div class="button" id="play" on:click={playing} on:keydown={playing} role="button" tabindex="0"></div>
+    <div class="button" id="stop" on:click={stopping} on:keydown={stopping} on:mouseup={stopUpdate} role="button" tabindex="0"></div>
     <div class="button" id="reverse"></div>
 </div>
 
