@@ -1,24 +1,20 @@
 <script> 
-    import { playToken, revToken } from './app.js'; 
+    import { playToken } from './app.js'; 
 
-    let rotationInterval; 
-    let rotateDegree = 0; 
+    let rotationInterval, tapeLeft, tapeRight; 
+    let rotateDegreeLeft = 0; 
+    let rotateDegreeRight = 0; 
 
     function rotateImage() {
-        let tapeLeft = document.getElementById("tapeLeft");
-        rotateDegree =+ 60; 
-        tapeLeft.style.transform = "rotate("+ (rotateDegree % 360) +"deg)"; 
-    }
-
-    function resetImage() {
-        let tapeLeft = document.getElementById("tapeLeft");
-        rotateDegree =+ 60; 
-        tapeLeft.style.transform = "rotate("+ (360 - (rotateDegree % 360)) +"deg)";
+        rotateDegreeLeft += 10; 
+        rotateDegreeRight += 12; 
+        tapeLeft.style.transform = "rotate("+ (rotateDegreeLeft % 360) +"deg)"; 
+        tapeRight.style.transform = "rotate("+ (180 + (rotateDegreeRight % 360)) +"deg)"; 
     }
 
     playToken.subscribe((value) => {
         if (value === 1) {
-            rotationInterval = setInterval(rotateImage, 100);  
+            rotationInterval = setInterval(rotateImage, 40);  
         } else if (value === 0) { 
             clearInterval(rotationInterval); 
         }
@@ -27,11 +23,13 @@
 </script>
 
 <div id='tapereels'>
-    <img id='tapeLeft' src="tape1.png" alt="tape spool">
-    <img id='tapeRight' src="tape1.png" alt="tape spool">
+    <div class='tapeBackground'>
+        <img id='tapeLeft' src="tape1.png" alt="tape spool" bind:this={tapeLeft}>
+    </div>
+    <div class='tapeBackground'>
+        <img id='tapeRight' src="tape1.png" alt="tape spool" style="transform: rotate(180deg)" bind:this={tapeRight}>
+    </div>
 </div>
-
-
 
 <style>
     #tapereels {
@@ -41,4 +39,19 @@
         gap: 50px; 
     }
 
+    img {
+        width: 15rem; 
+        height: 15rem; 
+    }
+
+    .tapeBackground {
+        width: 16rem; 
+        height: 16rem; 
+        border-radius: 50%; 
+        border: solid 2pt black; 
+        background: black; 
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
 </style>
