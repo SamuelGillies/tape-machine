@@ -2,13 +2,14 @@
 
     import { tapeItem } from './app.js'; 
 
-
+    let tapeItemSelection; 
+    tapeItem.set(tapeItemSelection); 
 
 </script>
 
 <div id="menuContainer">
     <form>
-        <select id="tapes" name="tapes" >
+        <select id="tapes" name="tapes" bind:value={tapeItemSelection}>
             <option value="0">01-Timpani-Rolls</option>
             <option value="1">01-Timpani-RubberBall</option>
             <option value="2">01-Timpani-Strikes</option>
@@ -72,6 +73,7 @@
     }
 
     select {
+        background-color: rgba(255, 255, 255, 0); 
         border: solid 2pt black; 
         border-radius: 4px;    
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
