@@ -3,18 +3,21 @@
     import Tape from './Tape.svelte'; 
     import Menu from './Menu.svelte'; 
     import SpeedDial from './SpeedDial.svelte'; 
+    import RangeSlider from './RangeSlider.svelte'; 
 
 
 
 </script>
 
-<Tape/>
-<div id='Ctrl'> 
-    <Menu/>
-    <SpeedDial/>
+<div id='unit'>
+    <Tape/>
+    <div id='Ctrl'> 
+        <Menu/>
+        <SpeedDial/>
+    </div>
+    <RangeSlider/>
+    <Buttons/>
 </div>
-
-<Buttons/>
 
 <style>
     

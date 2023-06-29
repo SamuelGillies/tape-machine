@@ -2,7 +2,8 @@
     
     import { tapeSpeed } from './app.js'; 
 
-    let tapeSpeedSelection; 
+    let tapeSpeedSelection = 1; 
+    let labelOne, labelTwo, labelThree; 
     tapeSpeed.set(tapeSpeedSelection); 
 
 </script>
@@ -12,9 +13,9 @@
 <div id='speedContainer'>
     <input bind:value={tapeSpeedSelection} id='speed' name='speed' type='range' orient='vertical' min="0" max="2">
     <div id='speedLabels'>
-        <p>15 i.p.s.</p>
-        <p>7.5 i.p.s.</p>
-        <p>3.75 i.p.s.</p>
+        <p bind:this={labelOne}>15 i.p.s.</p>
+        <p bind:this={labelTwo} class='highlight'>7.5 i.p.s.</p>
+        <p bind:this={labelThree}>3.75 i.p.s.</p>
     </div>
 </div>
 
@@ -43,6 +44,5 @@
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: large; 
     }
-
 
 </style>
