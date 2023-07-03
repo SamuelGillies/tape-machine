@@ -1,15 +1,38 @@
 <script> 
 // https://medium.com/@predragdavidovic10/native-dual-range-slider-html-css-javascript-91e778134816
 
+    import { onMount } from 'svelte';
+    import { tapePosMin, tapePosMax } from './app.js'; 
 
+    let minSlideValue, maxSlideValue; 
+
+    function checkMin() {
+        if (minSlideValue >= maxSlideValue - 20) {
+            minSlideValue = maxSlideValue - 20; 
+        }
+    }
+
+    function checkMax() {
+        if (maxSlideValue <= minSlideValue + 20) {
+            maxSlideValue = minSlideValue + 20; 
+        }
+    }
+
+    $: tapePosMin.set(minSlideValue); 
+    $: tapePosMax.set(maxSlideValue); 
+
+    onMount(async () => {
+        minSlideValue = 300, maxSlideValue = 700; 
+	});
 
 </script>
 
 
 <div id='rangeContainer'> 
-    <input id='minSlider' type='range' value=30 min=0 max=100 >
-    <input id='maxSlider' type='range' value=70 min=0 max=100 >
+    <input id='minSlider' type='range' bind:value={minSlideValue} on:input={checkMin} min=0 max=1000 >
+    <input id='maxSlider' type='range' bind:value={maxSlideValue} on:input={checkMax} min=0 max=1000 >
 </div>
+
 
 <style>
     #rangeContainer {

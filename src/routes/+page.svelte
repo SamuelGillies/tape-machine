@@ -4,7 +4,7 @@
     import Menu from './Menu.svelte'; 
     import SpeedDial from './SpeedDial.svelte'; 
     import RangeSlider from './RangeSlider.svelte'; 
-
+    import { playToken, stopToken, revToken, tapeItem, tapeSpeed, tapePosMin, tapePosMax } from './app';
 
 
 </script>
